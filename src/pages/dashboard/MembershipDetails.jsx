@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Stack } from '@mui/material';
 
 import Footerview from 'src/sections/footer/Footerview';
-import MembershipDetailsView from 'src/sections/two/MembershipDetailsView';
+import AccountView from 'src/sections/MembershipDetails/user-profile-view';
 
 
 // ----------------------------------------------------------------------
@@ -15,7 +15,7 @@ export default function Page() {
         <title> Dashboard: MembershipDetails</title>
       </Helmet>
 
-      <MembershipDetailsView />
+      <AccountView />
       <Footerview />
     </Stack>
   );
