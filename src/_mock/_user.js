@@ -125,16 +125,19 @@ export const _userPlans = [
     subscription: 'basic',
     price: 0,
     primary: false,
+    description: 'Individuals'
   },
   {
-    subscription: 'starter',
+    subscription: 'Standard',
     price: 4.99,
     primary: true,
+    description: 'Small / Medium Organizations'
   },
   {
     subscription: 'premium',
     price: 9.99,
     primary: false,
+    description: 'Large Organizations'
   },
 ];
 

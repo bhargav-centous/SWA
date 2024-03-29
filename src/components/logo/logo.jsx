@@ -8,11 +8,14 @@ import Link from '@mui/material/Link';
 
 import { RouterLink } from 'src/routes/components';
 
+import { useSettingsContext } from '../settings';
+
 // ----------------------------------------------------------------------
 
 const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   // const theme = useTheme();
-
+  const settingContext = useSettingsContext()
+  const isMini = (settingContext.themeLayout === 'mini')
   // const PRIMARY_LIGHT = theme.palette.primary.light;
 
   // const PRIMARY_MAIN = theme.palette.primary.main;
@@ -42,7 +45,7 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
       }}
       {...other}
     >
-      <img alt='header-icon' src='/assets/swa-logo.png' />
+      <img style={{ width: isMini ? '50px' : '' }} alt='header-icon' src={`/assets/${isMini ? 'mini-logo.svg' : 'swa-logo.png'}`} />
     </Box>
   );
 

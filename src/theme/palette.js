@@ -115,6 +115,7 @@ export function palette(mode) {
       default: '#FFFFFF',
       lightGray: '#F8F9FA',
       neutral: grey[200],
+      green: '#28B04C'
     },
     action: {
       ...base.action,
@@ -132,6 +133,7 @@ export function palette(mode) {
     },
     background: {
       paper: grey[800],
+      green: '#28B04C',
       default: grey[900],
       neutral: alpha(grey[500], 0.12),
     },

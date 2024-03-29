@@ -21,7 +21,6 @@ export default function DashboardLayout({ children }) {
   const lgUp = useResponsive('up', 'lg');
 
   const nav = useBoolean();
-
   const isHorizontal = settings.themeLayout === 'horizontal';
 
   const isMini = settings.themeLayout === 'mini';
@@ -43,7 +42,6 @@ export default function DashboardLayout({ children }) {
       </>
     );
   }
-
   if (isMini) {
     return (
       <>

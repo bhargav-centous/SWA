@@ -60,7 +60,6 @@ export default function NavVertical({ openNav, onCloseNav }) {
       {/* <NavUpgrade /> */}
     </Scrollbar>
   );
-
   return (
     <Box
       sx={{

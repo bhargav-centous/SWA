@@ -6,14 +6,16 @@ import Container from '@mui/material/Container';
 
 import { paths } from 'src/routes/paths';
 
+import { _userPlans, _userPayment, _userInvoices, _userAddressBook } from 'src/_mock';
+
 import Iconify from 'src/components/iconify';
 import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 import UserProfile from './UserProFile';
-
+import BillingInfo from './BillingInfo';
 // import AccountGeneral from '../account-general';
-// import AccountBilling from '../account-billing';
+import AccountBilling from './Membership';
 // import AccountSocialLinks from '../account-social-links';
 // import AccountNotifications from '../account-notifications';
 // import AccountChangePassword from '../account-change-password';
@@ -74,6 +76,15 @@ export default function AccountView() {
         ))}
       </Tabs>
       {currentTab === 'user-profile' && <UserProfile />}
+      {currentTab === 'billing-Info' && <BillingInfo />}
+      {currentTab === 'membership' && (
+        <AccountBilling
+          plans={_userPlans}
+          cards={_userPayment}
+          invoices={_userInvoices}
+          addressBook={_userAddressBook}
+        />
+      )}
     </Container>
   );
 }

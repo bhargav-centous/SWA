@@ -10,7 +10,7 @@ import { LoadingScreen } from 'src/components/loading-screen';
 
 const DashboardPage = lazy(() => import('src/pages/dashboard/Dashboard'));
 const MembershipDetails = lazy(() => import('src/pages/dashboard/MembershipDetails'));
-const PageThree = lazy(() => import('src/pages/dashboard/three'));
+const SelfAssessmentForm = lazy(() => import('src/pages/dashboard/SelfAssessmentForm'));
 const PageFour = lazy(() => import('src/pages/dashboard/four'));
 const PageFive = lazy(() => import('src/pages/dashboard/five'));
 const PageSix = lazy(() => import('src/pages/dashboard/six'));
@@ -32,7 +32,7 @@ export const dashboardRoutes = [
     children: [
       { element: <DashboardPage />, index: true },
       { path: 'membershipDetails', element: <MembershipDetails /> },
-      { path: 'three', element: <PageThree /> },
+      { path: 'selfAssessmentForm', element: <SelfAssessmentForm /> },
       {
         path: 'group',
         children: [
