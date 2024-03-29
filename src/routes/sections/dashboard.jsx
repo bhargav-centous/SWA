@@ -14,6 +14,8 @@ const SelfAssessmentForm = lazy(() => import('src/pages/dashboard/SelfAssessment
 const PageFour = lazy(() => import('src/pages/dashboard/four'));
 const PageFive = lazy(() => import('src/pages/dashboard/five'));
 const PageSix = lazy(() => import('src/pages/dashboard/six'));
+const LinkedRequest = lazy(() => import('src/pages/dashboard/LinkedRequest'));
+const PendingRequest = lazy(() => import('src/pages/dashboard/PendingRequest'));
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +35,8 @@ export const dashboardRoutes = [
       { element: <DashboardPage />, index: true },
       { path: 'membershipDetails', element: <MembershipDetails /> },
       { path: 'selfAssessmentForm', element: <SelfAssessmentForm /> },
+      { path: 'linkedRequest', element: <LinkedRequest /> },
+      { path: 'pendingRequest', element: <PendingRequest /> },
       {
         path: 'group',
         children: [

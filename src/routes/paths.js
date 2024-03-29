@@ -23,6 +23,8 @@ export const paths = {
     selfAssessmentForm: `${ROOTS.DASHBOARD}/selfAssessmentForm`,
     brnadSearch: `${ROOTS.DASHBOARD}/brnadSearch`,
     ngoSearch: `${ROOTS.DASHBOARD}/ngoSearch`,
+    linkedRequest: `${ROOTS.DASHBOARD}/linkedRequest`,
+    pendingRequest: `${ROOTS.DASHBOARD}/pendingRequest`
     // group: {
     //   root: `${ROOTS.DASHBOARD}/group`,
     //   five: `${ROOTS.DASHBOARD}/group/five`,
