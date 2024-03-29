@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import { Radio, Divider, FormLabel, RadioGroup, FormControl, FormControlLabel } from '@mui/material';
 
 import { useMockedUser } from 'src/hooks/use-mocked-user';
 
@@ -35,7 +36,8 @@ export default function UserProfile() {
     const { user } = useMockedUser();
 
     const UpdateUserSchema = Yup.object().shape({
-        displayName: Yup.string().required('Name is required'),
+        fname: Yup.string().required('First Name is required'),
+        lname: Yup.string().required('Last Name is required'),
         email: Yup.string().required('Email is required').email('Email must be a valid email address'),
         photoURL: Yup.mixed().nullable().required('Avatar is required'),
         phoneNumber: Yup.string().required('Phone number is required'),
@@ -50,7 +52,8 @@ export default function UserProfile() {
     });
 
     const defaultValues = {
-        displayName: user?.displayName || '',
+        fname: 'Gaurav',
+        lname: 'Gurjar',
         email: user?.email || '',
         photoURL: user?.photoURL || null,
         phoneNumber: user?.phoneNumber || '',
@@ -124,7 +127,7 @@ export default function UserProfile() {
                         <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                             <ListItem alignItems="flex-start">
                                 <ListItemAvatar>
-                                    <SvgColor sx={{ bgcolor: '#637381' }} src="/assets/icons/membership/organization-type-icon.svg" />
+                                    <SvgColor sx={{ bgcolor: 'text.secondary' }} src="/assets/icons/membership/organization-type-icon.svg" />
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={<Typography>Organization Type</Typography>}
@@ -142,7 +145,7 @@ export default function UserProfile() {
                             </ListItem>
                             <ListItem alignItems="flex-start">
                                 <ListItemAvatar>
-                                    <SvgColor sx={{ bgcolor: '#637381' }} src="/assets/icons/membership/membership-plan-icon.svg" />
+                                    <SvgColor sx={{ bgcolor: 'text.secondary' }} src="/assets/icons/membership/membership-plan-icon.svg" />
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={<Typography>Membership Plan</Typography>}
@@ -160,7 +163,7 @@ export default function UserProfile() {
                             </ListItem>
                             <ListItem alignItems="flex-start">
                                 <ListItemAvatar>
-                                    <SvgColor sx={{ bgcolor: '#637381' }} src="/assets/icons/membership/user-profile-icon.svg" />
+                                    <SvgColor sx={{ bgcolor: 'text.secondary' }} src="/assets/icons/membership/user-profile-icon.svg" />
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={<Typography>Membership Number</Typography>}
@@ -181,21 +184,53 @@ export default function UserProfile() {
                 </Grid>
 
                 <Grid xs={12} md={8}>
-                    <Card sx={{ p: 3 }}>
+                    <Card sx={{ pb: 2, mb: 3 }}>
+                        <Typography sx={{ px: 3, py: 2, fontSize: 14, fontWeight: 500 }}>Personal Information</Typography>
+                        <Divider sx={{ mb: 2 }} />
                         <Box
                             rowGap={3}
                             columnGap={2}
+                            sx={{ px: 3 }}
                             display="grid"
                             gridTemplateColumns={{
                                 xs: 'repeat(1, 1fr)',
                                 sm: 'repeat(2, 1fr)',
                             }}
                         >
-                            <RHFTextField name="displayName" label="Name" />
+                            <RHFTextField name="fname" label="First Name" />
+                            <RHFTextField name="lname" label="Last Name" />
                             <RHFTextField name="email" label="Email Address" />
-                            <RHFTextField name="phoneNumber" label="Phone Number" />
-                            <RHFTextField name="address" label="Address" />
-
+                            <RHFTextField name="phoneNumber" label="Contact" />
+                        </Box>
+                        <FormControl sx={{ my: 2, px: 4, }}>
+                            <FormLabel id="demo-row-radio-buttons-group-label">Subscribe To Newsletter</FormLabel>
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                            >
+                                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                                <FormControlLabel value="no" control={<Radio />} label="No" />
+                            </RadioGroup>
+                        </FormControl>
+                        <Divider sx={{ mb: 2 }} />
+                        <Typography sx={{ mb: 3, px: 3, fontSize: 14, fontWeight: 500 }}>Enter Address Information</Typography>
+                        <Box sx={{ mb: 3, px: 3 }}>
+                            <RHFTextField name="address" label="Address line 1" />
+                        </Box>
+                        <Box
+                            rowGap={3}
+                            columnGap={2}
+                            sx={{ px: 3, }}
+                            display="grid"
+                            gridTemplateColumns={{
+                                xs: 'repeat(1, 1fr)',
+                                sm: 'repeat(2, 1fr)',
+                            }}
+                        >
+                            <RHFTextField name="city" label="City" />
+                            <RHFTextField name="state" label="State/Region" />
+                            <RHFTextField name="zipCode" label="Zip/Code" />
                             <RHFAutocomplete
                                 name="country"
                                 type="country"
@@ -204,17 +239,11 @@ export default function UserProfile() {
                                 options={countries.map((option) => option.label)}
                                 getOptionLabel={(option) => option}
                             />
-
-                            <RHFTextField name="state" label="State/Region" />
-                            <RHFTextField name="city" label="City" />
-                            <RHFTextField name="zipCode" label="Zip/Code" />
                         </Box>
 
-                        <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
-                            <RHFTextField name="about" multiline rows={4} label="About" />
-
-                            <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-                                Save Changes
+                        <Stack spacing={3} alignItems="flex-end" sx={{ mt: 2, mb: 1, px: 3 }}>
+                            <LoadingButton sx={{ bgcolor: 'background.green', color: 'common.white' }} type="submit" variant="contained" loading={isSubmitting}>
+                                Save
                             </LoadingButton>
                         </Stack>
                     </Card>

@@ -24,9 +24,7 @@ export default function ThemeProvider({ children }) {
   const settings = useSettingsContext();
 
   const presets = createPresets(settings.themeColorPresets);
-
   const contrast = createContrast(settings.themeContrast, settings.themeMode);
-
   const memoizedValue = useMemo(
     () => ({
       palette: {

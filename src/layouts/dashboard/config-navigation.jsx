@@ -41,7 +41,6 @@ const ICONS = {
   dashboard: icon('ic_dashboard'),
   membershipDetails: icon('membership-details')
 };
-console.log(ICONS.membershipDetails);
 // ----------------------------------------------------------------------
 export function useNavData() {
   const data = useMemo(
