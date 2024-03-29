@@ -53,8 +53,10 @@ export function useNavData() {
           { title: 'Dashboard', path: paths.dashboard.root, icon: ICONS.dashboard },
           { title: 'Membership Details', path: paths.dashboard.membershipDetails, icon: ICONS.membershipDetails },
           { title: 'Self Assessment Form', path: paths.dashboard.selfAssessmentForm, icon: ICONS.dashboard },
-          { title: 'Brands Search', path: paths.dashboard.brnadSearch, icon: ICONS.ecommerce },
-          { title: 'NGO Search', path: paths.dashboard.ngoSearch, icon: ICONS.ecommerce },
+          { title: 'Linked Request', path: paths.dashboard.linkedRequest, icon: ICONS.membershipDetails },
+          { title: 'Pending Request', path: paths.dashboard.pendingRequest, icon: ICONS.membershipDetails },
+          // { title: 'Brands Search', path: paths.dashboard.brnadSearch, icon: ICONS.ecommerce },
+          // { title: 'NGO Search', path: paths.dashboard.ngoSearch, icon: ICONS.ecommerce },
         ],
       },
 
