@@ -6,12 +6,12 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { pendingRequest } from 'src/utils/constant';
+import { linkedRequest } from 'src/utils/constant';
 
 import Iconify from 'src/components/iconify';
 
-import LinkItem from '../common/LinkItem';
-import { LinkItemSkeleton } from './link-request-skleton';
+import LinkItem from '../../common/LinkItem';
+import { LinkItemSkeleton } from '../link-request-skleton';
 
 const SearchBar = styled(TextField)`
     width:435px;
@@ -30,7 +30,7 @@ const renderSkeleton = (
 
 const renderList = (
     <>
-        {pendingRequest.map((post, index) => (
+        {linkedRequest.map((post, index) => (
             <Grid item key={post.id} xs={12} sm={12} md={6}>
                 <LinkItem post={post} />
             </Grid>
@@ -38,13 +38,12 @@ const renderList = (
     </>
 );
 
-const LinkRequestView = () => {
+const LinkedRequestView = () => {
     const loading = false
     return (
         <>
             <Stack pb={7} direction='row' justifyContent='end'>
                 <SearchBar
-                    className='bhargav'
                     placeholder="Search..."
                     InputProps={{
                         startAdornment: (
@@ -63,4 +62,4 @@ const LinkRequestView = () => {
     )
 }
 
-export default LinkRequestView
+export default LinkedRequestView

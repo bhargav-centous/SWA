@@ -39,7 +39,8 @@ const ICONS = {
   ecommerce: icon('ic_ecommerce'),
   analytics: icon('ic_analytics'),
   dashboard: icon('ic_dashboard'),
-  membershipDetails: icon('membership-details')
+  membershipDetails: icon('membership-details'),
+  linkRequest: icon('link-request-icon'),
 };
 // ----------------------------------------------------------------------
 export function useNavData() {
@@ -55,6 +56,7 @@ export function useNavData() {
           { title: 'Self Assessment Form', path: paths.dashboard.selfAssessmentForm, icon: ICONS.dashboard },
           { title: 'Linked Request', path: paths.dashboard.linkedRequest, icon: ICONS.membershipDetails },
           { title: 'Pending Request', path: paths.dashboard.pendingRequest, icon: ICONS.membershipDetails },
+          { title: 'Link Request', path: paths.dashboard.linkRequest, icon: ICONS.linkRequest },
           // { title: 'Brands Search', path: paths.dashboard.brnadSearch, icon: ICONS.ecommerce },
           // { title: 'NGO Search', path: paths.dashboard.ngoSearch, icon: ICONS.ecommerce },
         ],
