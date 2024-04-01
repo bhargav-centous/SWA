@@ -54,6 +54,7 @@ export function PostContent({ title, type, rating, btnText, email, btnIcon, cont
         const obj = {
             pending: 'background.green',
             linked: 'error.main',
+            link: 'background.green'
         }
         return obj[renderType]
     }
@@ -73,10 +74,10 @@ export function PostContent({ title, type, rating, btnText, email, btnIcon, cont
                     label="Brand"
                 />
             </Stack>
-            <Rating value={rating} readOnly sx={{ color: '#FF6E00', mb: 2 }} />
+            <Rating value={Number(rating)} readOnly sx={{ color: '#FF6E00', mb: 2 }} />
             <Typography mb={2} variant='caption' color='text.disabled'>Organization Registration Number : {organizationRegistrationNumber}</Typography>
             <Typography mb={2} variant='caption' color='text.disabled'>Membership Number : {membershipNumber}</Typography>
-            <Stack direction="row" spacing={1} mb={2}>
+            <Stack direction="row" spacing={5} mb={2}>
                 <Stack
                     direction="row"
                     spacing={0.5}
@@ -89,13 +90,14 @@ export function PostContent({ title, type, rating, btnText, email, btnIcon, cont
                     direction="row"
                     spacing={0.5}
                     alignItems='center'
+
                 >
                     <Iconify sx={{ color: "background.green" }} icon="ion:mail-outline" />
                     <Typography variant='caption' color='text.disabled'>{email}</Typography>
                 </Stack>
             </Stack>
             <Stack direction="row" spacing={2} >
-                <Button variant='contained' startIcon={type === 'linked' ? <SvgColor src={`/assets/images/Link/${btnIcon}.svg`} /> : ''} sx={{ bgcolor: getBgColor(type) }}>
+                <Button variant='contained' startIcon={btnIcon ? <SvgColor src={`/assets/images/Link/${btnIcon}.svg`} /> : ''} sx={{ bgcolor: getBgColor(type) }}>
                     {btnText}
                 </Button>
                 {type === 'pending' &&
@@ -111,7 +113,7 @@ export function PostContent({ title, type, rating, btnText, email, btnIcon, cont
 PostContent.propTypes = {
     email: PropTypes.string,
     title: PropTypes.string,
-    rating: PropTypes.number,
+    rating: PropTypes.string,
     organizationRegistrationNumber: PropTypes.string,
     membershipNumber: PropTypes.string,
     contactno: PropTypes.string,

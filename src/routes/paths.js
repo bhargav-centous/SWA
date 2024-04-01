@@ -24,7 +24,8 @@ export const paths = {
     brnadSearch: `${ROOTS.DASHBOARD}/brnadSearch`,
     ngoSearch: `${ROOTS.DASHBOARD}/ngoSearch`,
     linkedRequest: `${ROOTS.DASHBOARD}/linkedRequest`,
-    pendingRequest: `${ROOTS.DASHBOARD}/pendingRequest`
+    pendingRequest: `${ROOTS.DASHBOARD}/pendingRequest`,
+    linkRequest: `${ROOTS.DASHBOARD}/linkRequest`
     // group: {
     //   root: `${ROOTS.DASHBOARD}/group`,
     //   five: `${ROOTS.DASHBOARD}/group/five`,

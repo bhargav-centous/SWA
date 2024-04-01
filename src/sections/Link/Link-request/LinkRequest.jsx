@@ -7,30 +7,30 @@ import { paths } from 'src/routes/paths';
 import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-import PendingRequestView from './LinkRequestView';
+import LinkRequestView from './LinkRequestView';
 
 
 
 
-const LinkedRequest = () => {
+const LinkRequest = () => {
     const settings = useSettingsContext();
     return (
         <Container maxWidth={settings.themeStretch ? false : 'lg'}>
             <CustomBreadcrumbs
-                heading="Linked Request"
+                heading="Link Request"
                 links={[
                     { name: 'Dashboard', href: paths.dashboard.root },
-                    { name: 'Linked Request', href: paths.dashboard.linkedRequest },
+                    { name: 'Link Request', href: paths.dashboard.linkRequest },
                 ]}
                 sx={{
                     mb: { xs: 3, md: 5 },
                 }}
             />
-            <PendingRequestView />
+            <LinkRequestView />
 
 
         </Container>
     )
 }
 
-export default LinkedRequest
+export default LinkRequest
