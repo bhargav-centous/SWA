@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useAuth0 } from '@auth0/auth0-react'
 import { useMemo, useEffect, useReducer, useCallback } from 'react';
 
 import axios, { endpoints } from 'src/utils/axios';
@@ -52,7 +53,10 @@ const reducer = (state, action) => {
 const STORAGE_KEY = 'accessToken';
 
 export function AuthProvider({ children }) {
+  const { isAuthenticated } = useAuth0()
+  console.log(isAuthenticated);
   const [state, dispatch] = useReducer(reducer, initialState);
+
   const initialize = useCallback(async () => {
     try {
       const accessToken = sessionStorage.getItem(STORAGE_KEY);
@@ -82,7 +86,6 @@ export function AuthProvider({ children }) {
         });
       }
     } catch (error) {
-      console.error(error);
       dispatch({
         type: 'INITIAL',
         payload: {
@@ -98,26 +101,26 @@ export function AuthProvider({ children }) {
 
   // LOGIN
   const login = useCallback(async (email, password) => {
-    const data = {
-      email,
-      password,
-    };
+    // const data = {
+    //   email,
+    //   password,
+    // };
 
-    const response = await axios.post(endpoints.auth.login, data);
+    // const response = await axios.post(endpoints.auth.login, data);
 
-    const { accessToken, user } = response.data;
+    // const { accessToken, user } = response.data;
 
-    setSession(accessToken);
+    // setSession(accessToken);
 
-    dispatch({
-      type: 'LOGIN',
-      payload: {
-        user: {
-          ...user,
-          accessToken,
-        },
-      },
-    });
+    // dispatch({
+    //   type: 'LOGIN',
+    //   payload: {
+    //     user: {
+    //       ...user,
+    //       accessToken,
+    //     },
+    //   },
+    // });
   }, []);
 
   // REGISTER
