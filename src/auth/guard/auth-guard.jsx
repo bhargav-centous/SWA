@@ -13,6 +13,7 @@ import { SplashScreen } from 'src/components/loading-screen';
 
 const loginPaths = {
   jwt: paths.auth.jwt.login,
+  auth0: paths.auth.auth0.login,
 };
 
 // ----------------------------------------------------------------------
@@ -32,7 +33,6 @@ AuthGuard.propTypes = {
 function Container({ children }) {
   const router = useRouter();
   const { authenticated, method } = useAuthContext();
-
   const [checked, setChecked] = useState(false);
 
   const check = useCallback(() => {
