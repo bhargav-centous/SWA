@@ -1,19 +1,10 @@
 import PropTypes from 'prop-types';
-import { useAuth0 } from '@auth0/auth0-react'
-import { useMemo, useEffect, useReducer, useCallback } from 'react';
-
+import { useAuth0 } from '@auth0/auth0-react';
+import { useMemo, useEffect, useReducer, useCallback } from 'react'; // Import useAuth0 hook
 import axios, { endpoints } from 'src/utils/axios';
 
 import { AuthContext } from './auth-context';
 import { setSession, isValidToken } from './utils';
-
-// ----------------------------------------------------------------------
-/**
- * NOTE:
- * We only build demo at basic level.
- * Customer will need to do some extra handling yourself if you want to extend the logic and other features...
- */
-// ----------------------------------------------------------------------
 
 const initialState = {
   user: null,
@@ -48,13 +39,11 @@ const reducer = (state, action) => {
   return state;
 };
 
-// ----------------------------------------------------------------------
-
 const STORAGE_KEY = 'accessToken';
 
 export function AuthProvider({ children }) {
-  const { isAuthenticated } = useAuth0()
-  console.log(isAuthenticated);
+  const { isLoading, loginWithRedirect, logout } = useAuth0();
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const initialize = useCallback(async () => {
@@ -86,6 +75,7 @@ export function AuthProvider({ children }) {
         });
       }
     } catch (error) {
+      console.error(error);
       dispatch({
         type: 'INITIAL',
         payload: {
@@ -99,69 +89,22 @@ export function AuthProvider({ children }) {
     initialize();
   }, [initialize]);
 
-  // LOGIN
   const login = useCallback(async (email, password) => {
-    // const data = {
-    //   email,
-    //   password,
-    // };
+    loginWithRedirect();
+  }, [loginWithRedirect]);
 
-    // const response = await axios.post(endpoints.auth.login, data);
-
-    // const { accessToken, user } = response.data;
-
-    // setSession(accessToken);
-
-    // dispatch({
-    //   type: 'LOGIN',
-    //   payload: {
-    //     user: {
-    //       ...user,
-    //       accessToken,
-    //     },
-    //   },
-    // });
-  }, []);
-
-  // REGISTER
   const register = useCallback(async (email, password, firstName, lastName) => {
-    const data = {
-      email,
-      password,
-      firstName,
-      lastName,
-    };
-
-    const response = await axios.post(endpoints.auth.register, data);
-
-    const { accessToken, user } = response.data;
-
-    sessionStorage.setItem(STORAGE_KEY, accessToken);
-
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        user: {
-          ...user,
-          accessToken,
-        },
-      },
-    });
+    // Handle registration if needed
   }, []);
 
-  // LOGOUT
-  const logout = useCallback(async () => {
+  const customLogout = useCallback(async () => {
+    logout({ returnTo: window.location.origin });
     setSession(null);
-    dispatch({
-      type: 'LOGOUT',
-    });
-  }, []);
-
-  // ----------------------------------------------------------------------
+    dispatch({ type: 'LOGOUT' });
+  }, [logout]);
 
   const checkAuthenticated = state.user ? 'authenticated' : 'unauthenticated';
-
-  const status = state.loading ? 'loading' : checkAuthenticated;
+  const status = isLoading ? 'loading' : checkAuthenticated;
 
   const memoizedValue = useMemo(
     () => ({
@@ -170,12 +113,11 @@ export function AuthProvider({ children }) {
       loading: status === 'loading',
       authenticated: status === 'authenticated',
       unauthenticated: status === 'unauthenticated',
-      //
       login,
       register,
-      logout,
+      logout: customLogout,
     }),
-    [login, logout, register, state.user, status]
+    [state.user, status, login, register, customLogout]
   );
 
   return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;

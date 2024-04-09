@@ -9,13 +9,16 @@ import { SplashScreen } from 'src/components/loading-screen';
 // ----------------------------------------------------------------------
 
 // JWT
-const JwtLoginPage = lazy(() => import('src/pages/auth/jwt/login'));
-const JwtRegisterPage = lazy(() => import('src/pages/auth/jwt/register'));
+// const JwtLoginPage = lazy(() => import('src/pages/auth/jwt/login'));
+// const JwtRegisterPage = lazy(() => import('src/pages/auth/jwt/register'));
 
+// AUTH0
+const Auth0LoginPage = lazy(() => import('src/pages/auth/auth0/login'));
+const Auth0Callback = lazy(() => import('src/pages/auth/auth0/callback'));
 // ----------------------------------------------------------------------
 
-const authJwt = {
-  path: 'jwt',
+const authAuth0 = {
+  path: 'auth0',
   element: (
     <Suspense fallback={<SplashScreen />}>
       <Outlet />
@@ -27,18 +30,16 @@ const authJwt = {
       element: (
         <GuestGuard>
           <AuthClassicLayout>
-            <JwtLoginPage />
+            <Auth0LoginPage />
           </AuthClassicLayout>
         </GuestGuard>
       ),
     },
     {
-      path: 'register',
+      path: 'callback',
       element: (
         <GuestGuard>
-          <AuthClassicLayout title="Manage the job more effectively with Minimal">
-            <JwtRegisterPage />
-          </AuthClassicLayout>
+          <Auth0Callback />
         </GuestGuard>
       ),
     },
@@ -48,6 +49,6 @@ const authJwt = {
 export const authRoutes = [
   {
     path: 'auth',
-    children: [authJwt],
+    children: [authAuth0],
   },
 ];
