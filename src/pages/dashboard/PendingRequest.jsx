@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <Stack justifyContent='space-between' sx={{ height: '100%' }}>
             <Helmet>
-                <title> Dashboard: Pending Request</title>
+                <title> SWA: Pending Request</title>
             </Helmet>
             <PendnigRequest />
             <Footerview />

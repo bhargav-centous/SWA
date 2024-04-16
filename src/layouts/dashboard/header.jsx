@@ -35,14 +35,14 @@ export default function Header({ onOpenNav }) {
   const offset = useOffSetTop(HEADER.H_DESKTOP);
 
   const offsetTop = offset && !isNavHorizontal;
-
+  console.log(!lgUp);
   const renderContent = (
     <>
-      {lgUp && isNavHorizontal && <Logo sx={{ mr: 2.5 }} />}
+      {lgUp && isNavHorizontal && <Logo sx={{ mr: 2.5, width: 136 }} />}
 
       {!lgUp && (
-        <IconButton sx={{ mt: 2 }} onClick={onOpenNav}>
-          <img alt='header-icon' src='/assets/swa-logo.png' />
+        <IconButton sx={{ mt: 2, pb: 2, width: 136 }} onClick={onOpenNav}>
+          <img alt='header-icon' src='/assets/swa-logo.svg' />
 
         </IconButton>
       )}

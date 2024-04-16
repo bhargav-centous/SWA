@@ -2,19 +2,14 @@ import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { alpha, useTheme } from '@mui/material/styles';
 
 import { useResponsive } from 'src/hooks/use-responsive';
-
-import { bgGradient } from 'src/theme/css';
 
 import Logo from 'src/components/logo';
 
 // ----------------------------------------------------------------------
 
 export default function AuthClassicLayout({ children, image, title }) {
-  const theme = useTheme();
 
   const mdUp = useResponsive('up', 'md');
 
@@ -24,6 +19,9 @@ export default function AuthClassicLayout({ children, image, title }) {
         zIndex: 9,
         position: 'absolute',
         m: { xs: 2, md: 5 },
+        width: '64%',
+        height: '120px',
+        justifyContent: 'center'
       }}
     />
   );
@@ -35,7 +33,7 @@ export default function AuthClassicLayout({ children, image, title }) {
         mx: 'auto',
         maxWidth: 600,
         px: { xs: 2, md: 8 },
-        pt: { xs: 15, md: 20 },
+        pt: { xs: 15, md: 0 },
         pb: { xs: 15, md: 0 },
       }}
     >
@@ -50,27 +48,21 @@ export default function AuthClassicLayout({ children, image, title }) {
       alignItems="center"
       justifyContent="center"
       sx={{
-        ...bgGradient({
-          color: alpha(
-            theme.palette.background.default,
-            theme.palette.mode === 'light' ? 0.88 : 0.94
-          ),
-          imgUrl: '/assets/background/overlay_2.jpg',
-        }),
+        backgroundImage: 'url(/assets/background/Auth-bg.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
-      <Typography variant="h3" sx={{ maxWidth: 480, textAlign: 'center' }}>
-        {title || 'Hi, Welcome back'}
-      </Typography>
-
       <Box
+        pt={10}
         component="img"
         alt="auth"
         src={image || '/assets/illustrations/illustration_dashboard.png'}
         sx={{
           maxWidth: {
             xs: 480,
-            lg: 560,
+            lg: 544,
             xl: 720,
           },
         }}

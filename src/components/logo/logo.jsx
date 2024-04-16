@@ -8,6 +8,8 @@ import Link from '@mui/material/Link';
 
 import { RouterLink } from 'src/routes/components';
 
+import { useAuthContext } from 'src/auth/hooks';
+
 import { useSettingsContext } from '../settings';
 
 // ----------------------------------------------------------------------
@@ -15,6 +17,7 @@ import { useSettingsContext } from '../settings';
 const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   // const theme = useTheme();
   const settingContext = useSettingsContext()
+  const { authenticated } = useAuthContext();
   const isMini = (settingContext.themeLayout === 'mini')
   // const PRIMARY_LIGHT = theme.palette.primary.light;
 
@@ -45,7 +48,8 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
       }}
       {...other}
     >
-      <img style={{ width: isMini ? '50px' : '' }} alt='header-icon' src={`/assets/${isMini ? 'mini-logo.svg' : 'swa-logo.png'}`} />
+      {authenticated ? <img style={{ width: isMini ? '50px' : 150 }} alt='header-icon' src={`/assets/${isMini ? 'mini-logo.svg' : 'swa-logo.svg'}`} /> : <img style={{ width: isMini ? '50px' : '' }} alt='header-icon' src={`/assets/${isMini ? 'mini-logo.svg' : 'swa-logo.svg'}`} />}
+
     </Box>
   );
 

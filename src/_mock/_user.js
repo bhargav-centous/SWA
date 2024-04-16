@@ -141,6 +141,30 @@ export const _userPlans = [
   },
 ];
 
+export const _registerPlans = [
+  {
+    subscription: 'basic',
+    price: 49,
+    primary: false,
+    list: ['Membership', 'Promotions', 'Insights', 'Newsletter', 'Projects', 'NGO / Brand Search'],
+    description: 'Individuals'
+  },
+  {
+    subscription: 'Standard',
+    price: 499,
+    primary: true,
+    list: ['Basic +', 'Self Assess / Score', 'Publish Profile page', 'Publish Ratings & Badge', 'Category Awards', 'Marketplace Search', 'SDGiCity Affiliate Program'],
+    description: 'Small / Medium Organizations'
+  },
+  {
+    subscription: 'premium',
+    price: 999,
+    primary: false,
+    list: ['Standard +', 'Sustainability Certification Pathways', 'NGO / Brand Link', 'Consumer Link', 'Publish Project', 'Overall Awards'],
+    description: 'Large Organizations'
+  },
+];
+
 export const _userList = [...Array(20)].map((_, index) => ({
   id: _mock.id(index),
   zipCode: '85807',

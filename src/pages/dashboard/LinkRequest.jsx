@@ -12,7 +12,7 @@ export default function Page() {
     return (
         <Stack justifyContent='space-between' sx={{ height: '100%' }}>
             <Helmet>
-                <title> Dashboard: Link Request</title>
+                <title> SWA: Link Request</title>
             </Helmet>
             <LinkRequest />
             <Footerview />

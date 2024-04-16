@@ -117,6 +117,7 @@ export function palette(mode) {
       neutral: grey[200],
       lightgreen: '#22C55E14',
       green: '#28B04C',
+      darkGray: '#384049'
     },
     action: {
       ...base.action,
@@ -137,7 +138,8 @@ export function palette(mode) {
       green: '#28B04C',
       default: grey[900],
       neutral: alpha(grey[500], 0.12),
-      lightgreen: '#22C55E14'
+      lightgreen: '#22C55E14',
+      darkGray: '#384049'
     },
     action: {
       ...base.action,

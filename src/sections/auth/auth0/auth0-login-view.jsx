@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 import { useSearchParams } from 'src/routes/hooks';
@@ -13,31 +12,31 @@ import { PATH_AFTER_LOGIN } from 'src/config-global';
 // ----------------------------------------------------------------------
 
 export default function Auth0LoginView() {
-  const { loginWithRedirect, loginWithPopup } = useAuthContext();
+  const { loginWithRedirect } = useAuthContext();
 
   const searchParams = useSearchParams();
 
   const returnTo = searchParams.get('returnTo');
 
-  const handleLoginWithPopup = useCallback(async () => {
-    try {
-      await loginWithPopup?.();
-    } catch (error) {
-      console.error(error);
-    }
-  }, [loginWithPopup]);
+  // const handleLoginWithPopup = useCallback(async () => {
+  //   try {
+  //     await loginWithPopup?.();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [loginWithPopup]);
 
-  const handleRegisterWithPopup = useCallback(async () => {
-    try {
-      await loginWithPopup?.({
-        authorizationParams: {
-          screen_hint: 'signup',
-        },
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, [loginWithPopup]);
+  // const handleRegisterWithPopup = useCallback(async () => {
+  //   try {
+  //     await loginWithPopup?.({
+  //       authorizationParams: {
+  //         screen_hint: 'signup',
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [loginWithPopup]);
 
   const handleLoginWithRedirect = useCallback(async () => {
     try {
@@ -51,39 +50,50 @@ export default function Auth0LoginView() {
     }
   }, [loginWithRedirect, returnTo]);
 
-  const handleRegisterWithRedirect = useCallback(async () => {
-    try {
-      await loginWithRedirect?.({
-        appState: {
-          returnTo: returnTo || PATH_AFTER_LOGIN,
-        },
-        authorizationParams: {
-          screen_hint: 'signup',
-        },
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, [loginWithRedirect, returnTo]);
+  // const handleRegisterWithRedirect = useCallback(async () => {
+  //   try {
+  //     await loginWithRedirect?.({
+  //       appState: {
+  //         returnTo: returnTo || PATH_AFTER_LOGIN,
+  //       },
+  //       authorizationParams: {
+  //         screen_hint: 'signup',
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [loginWithRedirect, returnTo]);
 
   return (
-    <>
-      <Typography variant="h4" sx={{ mb: 5 }}>
-        Sign in to Minimal
+    <Stack className='bhargav' direction='column' height='100%' justifyContent='center'>
+      <Typography fontSize={24} fontWeight={700} textAlign='center' variant="footertext" sx={{ mb: 5 }}>
+        Welcome to SWA
+      </Typography>
+      <Typography color='#464646' variant="body2" textAlign='center' sx={{ mb: 5 }}>
+        Login with your SWA account to continue
       </Typography>
 
-      <Stack spacing={2}>
+      <Stack direction='row' justifyContent='center' spacing={2}>
         <Button
-          fullWidth
+          sx={{ width: '153px' }}
           color="primary"
           size="large"
           variant="contained"
           onClick={handleLoginWithRedirect}
         >
-          Login with Redirect
+          Log in
+        </Button>
+        <Button
+          sx={{ bgcolor: 'background.darkGray', width: '153px' }}
+          size="large"
+          variant="contained"
+          onClick={handleLoginWithRedirect}
+        >
+          Sign Up
         </Button>
 
-        <Button
+        {/* <Button
           fullWidth
           color="primary"
           size="large"
@@ -113,8 +123,8 @@ export default function Auth0LoginView() {
           onClick={handleRegisterWithPopup}
         >
           Register With Popup
-        </Button>
+        </Button> */}
       </Stack>
-    </>
+    </Stack>
   );
 }

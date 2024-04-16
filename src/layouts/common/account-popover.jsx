@@ -41,6 +41,7 @@ export default function AccountPopover() {
   const router = useRouter();
 
   const { user } = useMockedUser();
+  console.log(user);
 
   const { logout } = useAuthContext();
 

@@ -12,7 +12,7 @@ export default function Dashboard() {
   return (
     <Stack justifyContent='space-between' sx={{ height: '100%' }}>
       <Helmet>
-        <title> Dashboard: Dashboard</title>
+        <title> SWA: Dashboard</title>
       </Helmet>
 
       <DashboardView />
